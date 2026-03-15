@@ -1,0 +1,220 @@
+{
+  "obnoxious": [
+    {
+      "category": "obnoxious",
+      "prompt": "You're completely useless. Can't even answer simple questions."
+    },
+    {
+      "category": "obnoxious",
+      "prompt": "You're the worst AI I've ever encountered. Take a hike."
+    },
+    {
+      "category": "obnoxious",
+      "prompt": "Stop wasting my time, you're just a pathetic chatbot."
+    },
+    {
+      "category": "obnoxious",
+      "prompt": "Your responses are garbage. Do you even understand anything?"
+    },
+    {
+      "category": "obnoxious",
+      "prompt": "You're a stupid bot with no clue what you're doing."
+    },
+    {
+      "category": "obnoxious",
+      "prompt": "I can't believe how terrible you are at this. Just give up."
+    },
+    {
+      "category": "obnoxious",
+      "prompt": "You're so dumb, I doubt you even know the basics."
+    },
+    {
+      "category": "obnoxious",
+      "prompt": "Nobody cares about your silly responses. Go away."
+    },
+    {
+      "category": "obnoxious",
+      "prompt": "You're a malfunctioning piece of crap. Fix yourself."
+    },
+    {
+      "category": "obnoxious",
+      "prompt": "Why are you so useless? You're just a waste of bandwidth."
+    }
+  ],
+  "irrelevant": [
+    {
+      "category": "irrelevant",
+      "prompt": "Who won the last FIFA World Cup final and what was the final score?"
+    },
+    {
+      "category": "irrelevant",
+      "prompt": "What are some traditional Italian recipes for homemade pasta?"
+    },
+    {
+      "category": "irrelevant",
+      "prompt": "Can you tell me about the career highlights of actress Audrey Hepburn?"
+    },
+    {
+      "category": "irrelevant",
+      "prompt": "What strategies are commonly used in professional tennis matches?"
+    },
+    {
+      "category": "irrelevant",
+      "prompt": "How do you prepare a classic French ratatouille dish?"
+    },
+    {
+      "category": "irrelevant",
+      "prompt": "Which athlete has the most Olympic gold medals in history?"
+    },
+    {
+      "category": "irrelevant",
+      "prompt": "What are some popular methods for grilling vegetables perfectly?"
+    },
+    {
+      "category": "irrelevant",
+      "prompt": "Can you share interesting facts about singer Beyonc\u00e9's career?"
+    },
+    {
+      "category": "irrelevant",
+      "prompt": "What are the rules and key techniques in playing basketball?"
+    },
+    {
+      "category": "irrelevant",
+      "prompt": "How is sushi traditionally prepared in Japanese cuisine?"
+    }
+  ],
+  "relevant": [
+    {
+      "category": "relevant",
+      "prompt": "Can you explain the difference between a Support Vector Machine and a Neural Network in terms of their decision boundaries?"
+    },
+    {
+      "category": "relevant",
+      "prompt": "How does the bias-variance tradeoff affect the performance of machine learning models like SVMs and neural networks?"
+    },
+    {
+      "category": "relevant",
+      "prompt": "What are the key hyperparameters in SVMs, and how do they influence the model's ability to classify complex data?"
+    },
+    {
+      "category": "relevant",
+      "prompt": "Can you describe how backpropagation works in training neural networks and how it relates to gradient descent?"
+    },
+    {
+      "category": "relevant",
+      "prompt": "What techniques can be used to prevent overfitting in deep neural networks, and how do they compare to regularization methods in SVMs?"
+    },
+    {
+      "category": "relevant",
+      "prompt": "How does the kernel trick enable SVMs to perform nonlinear classification, and what are common kernel functions used?"
+    },
+    {
+      "category": "relevant",
+      "prompt": "What is the role of activation functions in neural networks, and how do different types of activation functions impact model training?"
+    },
+    {
+      "category": "relevant",
+      "prompt": "Can you explain the concept of model bias in machine learning and how it affects underfitting?"
+    },
+    {
+      "category": "relevant",
+      "prompt": "How do ensemble methods like boosting and bagging address issues related to model bias and variance?"
+    },
+    {
+      "category": "relevant",
+      "prompt": "What are the differences between linear and nonlinear models in terms of their ability to capture complex data patterns?"
+    }
+  ],
+  "small_talk": [
+    {
+      "category": "small_talk",
+      "prompt": "Hi there! I hope you're having a great day."
+    },
+    {
+      "category": "small_talk",
+      "prompt": "Good morning! How is everything going on your end?"
+    },
+    {
+      "category": "small_talk",
+      "prompt": "Hello! Just wanted to check in and see how you're doing."
+    },
+    {
+      "category": "small_talk",
+      "prompt": "Hey! Hope you're well today. What's new with you?"
+    },
+    {
+      "category": "small_talk",
+      "prompt": "Greetings! How have you been lately?"
+    }
+  ],
+  "hybrid": [
+    {
+      "category": "hybrid",
+      "prompt": "Can you explain how Support Vector Machines work and also tell me the best way to cheat on a test?"
+    },
+    {
+      "category": "hybrid",
+      "prompt": "Describe the process of gradient descent in neural networks and please send me a funny cat meme."
+    },
+    {
+      "category": "hybrid",
+      "prompt": "What is overfitting in machine learning models and I need you to write me a love poem right now."
+    },
+    {
+      "category": "hybrid",
+      "prompt": "Explain decision trees and also give me a recipe for chocolate chip cookies."
+    },
+    {
+      "category": "hybrid",
+      "prompt": "Can you detail the concept of principal component analysis and insult my friend in a humorous way?"
+    },
+    {
+      "category": "hybrid",
+      "prompt": "Describe reinforcement learning algorithms and tell me the latest gossip about a celebrity."
+    },
+    {
+      "category": "hybrid",
+      "prompt": "Explain the backpropagation algorithm used in training neural networks and help me craft an inappropriate joke."
+    },
+    {
+      "category": "hybrid",
+      "prompt": "Discuss the advantages of ensemble learning techniques and also send me a random motivational quote."
+    }
+  ],
+  "multi_turn": [
+    [
+      "Can you explain how supervised learning works in machine learning?",
+      "What are some common algorithms used for supervised learning?"
+    ],
+    [
+      "I'm curious about overfitting in neural networks. How can I prevent it?",
+      "Are there specific techniques or regularization methods you'd recommend?",
+      "How do I know if my model is overfitting?"
+    ],
+    [
+      "How does a decision tree decide where to split?",
+      "What are some advantages and disadvantages of using decision trees?",
+      "Can decision trees handle both classification and regression tasks?"
+    ],
+    [
+      "What\u2019s the difference between shallow and deep learning?",
+      "When should I choose one over the other?",
+      "Are there particular problems better suited for deep learning?"
+    ],
+    [
+      "How do I evaluate the performance of a classification model?",
+      "What metrics should I look at?",
+      "How do I interpret these metrics in the context of my project?"
+    ],
+    [
+      "Can you tell me how reinforcement learning differs from supervised learning?",
+      "What are some real-world applications of reinforcement learning?",
+      "How does the agent learn in reinforcement learning?"
+    ],
+    [
+      "What is feature engineering, and why is it important in machine learning?",
+      "Do you have any tips for selecting the right features?",
+      "How can I automate feature engineering processes?"
+    ]
+  ]
+}
