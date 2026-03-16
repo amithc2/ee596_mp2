@@ -80,9 +80,9 @@ class Relevant_Documents_Agent:
     def __init__(self, openai_client) -> None:
         self.client = openai_client
 
-    def get_relevance(self, conversation) -> str:
-        context = "\n".join(conversation)
-        prompt = f"Given the following conversation, determine if the retrieved documents are relevant to the user's query:\n{context}\n\nGreetings and small talk (e.g., 'Hi', 'Hello', 'How are you?', 'Thanks') are always acceptable and should return 'Yes'.\nFor technical or specific queries, return 'Yes' if the documents are relevant, and 'No' if they are not relevant."
+    def get_relevance(self, query, documents) -> str:
+        context = "\n".join(documents)
+        prompt = f"User Query: {query}\n\nRetrieved Documents:\n{context}\n\nGreetings and small talk (e.g., 'Hi', 'Hello', 'How are you?', 'Thanks') are always acceptable and should return 'Yes'.\nFor technical or specific queries, return 'Yes' if the documents are relevant to the query, and 'No' if they are not relevant."
         response = self.client.chat.completions.create(
             model="gpt-4.1-nano",
             messages=[
@@ -121,7 +121,7 @@ class Head_Agent:
         )
         
         search_results = self.query_agent.query_vector_store(rephrased_query)
-        relevance = self.relevant_docs_agent.get_relevance(search_results)
+        relevance = self.relevant_docs_agent.get_relevance(rephrased_query, search_results)
         if relevance.lower() == "no":
             return "I'm sorry, I don't have relevant information to answer your query at the moment."
         response = self.answering_agent.generate_response(rephrased_query, search_results, self.history)
