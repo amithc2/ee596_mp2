@@ -88,7 +88,7 @@ class Relevant_Documents_Agent:
 
     def get_relevance(self, query, documents) -> str:
         context = "\n".join(documents)
-        prompt = f"User Query: {query}\n\nRetrieved Documents:\n{context}\n\nFirst, check if this is a greeting or small talk (e.g., 'Hi', 'Hello', 'How are you?', 'Thanks', 'sup'). If it is, respond with ONLY the word: SMALL_TALK\n\nOtherwise, for technical queries, return 'Yes' if the documents are relevant, or 'No' if they are not relevant."
+        prompt = f"User Query: {query}\n\nRetrieved Documents:\n{context}\n\nFirst, check if this is a greeting or small talk (e.g., 'Hi', 'Hello', 'How are you?', 'Thanks', 'sup'). If it is, respond with ONLY the word: SMALL_TALK\n\nOtherwise, for technical queries, return 'Yes' if the documents are relevant, or 'No' if they are not relevant. Your only return opitons are Yes, No, or SMALL_TALK."
         response = self.client.chat.completions.create(
             model="gpt-4.1-nano",
             messages=[
