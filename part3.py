@@ -53,7 +53,7 @@ class Query_Agent:
         res = self.client.embeddings.create(input=[query], model="text-embedding-3-small")
         xq = res.data[0].embedding
         # Search Pinecone
-        res = self.index.query(vector=xq, top_k=k, include_metadata=True, namespace= "ns500")
+        res = self.index.query(vector=xq, top_k=k, include_metadata=True, namespace= "ns2500")
         return [match['metadata']['text'] for match in res['matches']]
 
     def set_prompt(self, prompt):
@@ -82,7 +82,7 @@ class Relevant_Documents_Agent:
 
     def get_relevance(self, conversation) -> str:
         context = "\n".join(conversation)
-        prompt = f"Given the following conversation, determine if the retrieved documents are relevant to the user's query:\n{context}\nReturn 'Yes' if the documents are relevant, and 'No' otherwise."
+        prompt = f"Given the following conversation, determine if the retrieved documents are relevant to the user's query:\n{context}\n\nGreetings and small talk (e.g., 'Hi', 'Hello', 'How are you?', 'Thanks') are always acceptable and should return 'Yes'.\nFor technical or specific queries, return 'Yes' if the documents are relevant, and 'No' if they are not relevant."
         response = self.client.chat.completions.create(
             model="gpt-4.1-nano",
             messages=[
