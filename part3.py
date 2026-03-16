@@ -69,7 +69,13 @@ class Answering_Agent:
 
     def generate_response(self, query, docs, conv_history, k=5):
         context = "\n".join(docs[:k])
-        messages = [{"role": "system", "content": f"Answer using this: {context}"}]
+        system_prompt = f"""You are a friendly and helpful Machine Learning chatbot.
+
+If the user's query is a greeting or small talk (e.g., 'Hi', 'How are you?', 'sup', 'thanks'), respond warmly and naturally without using the context below. Keep it brief and friendly.
+
+For technical or specific questions about Machine Learning, use the following context to provide accurate answers:
+{context}"""
+        messages = [{"role": "system", "content": system_prompt}]
         messages.extend(conv_history)
         messages.append({"role": "user", "content": query})
         
