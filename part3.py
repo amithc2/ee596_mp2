@@ -49,11 +49,11 @@ class Query_Agent:
         self.embeddings = embeddings
         self.prompt = "Retrieve the most relevant segments for this query"
 
-    def query_vector_store(self, query, k=5):
+    def query_vector_store(self, query, k=10):
         res = self.client.embeddings.create(input=[query], model="text-embedding-3-small")
         xq = res.data[0].embedding
         # Search Pinecone
-        res = self.index.query(vector=xq, top_k=k, include_metadata=True, namespace= "ns2500")
+        res = self.index.query(vector=xq, top_k=k, include_metadata=True, namespace= "ns1000")
         return [match['metadata']['text'] for match in res['matches']]
 
     def set_prompt(self, prompt):
