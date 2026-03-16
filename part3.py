@@ -97,10 +97,11 @@ Retrieved Documents:
 
 First, check if this is a greeting or small talk (e.g., 'Hi', 'Hello', 'How are you?', 'How's your day going?', 'Thanks', 'sup'). If it is, respond with ONLY: SMALL_TALK
 
-For technical queries:
-- If asking about a specific concept/algorithm (K-means, CNN, SVM, etc.), return 'Yes' if documents mention that concept, even if they don't directly answer the classification question.
-- If asking for comparisons or analytical questions, return 'Yes' if you have documents about ANY relevant concept.
-- Only return 'No' if the documents are completely off-topic (irrelevant to Machine Learning).
+For technical questions about Machine Learning:
+- Extract all concepts mentioned in query (e.g., "K-means", "ReLU", "SVM", "neural networks")
+- Return 'Yes' if documents mention ANY of these concepts, even from different contexts
+- Return 'Yes' if documents could help answer questions about relationships between concepts
+- Only return 'No' if docs are completely unrelated to Machine Learning
 
 Return ONLY one of: Yes, No, or SMALL_TALK"""
         response = self.client.chat.completions.create(
