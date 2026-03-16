@@ -114,11 +114,17 @@ class Head_Agent:
         if self.obnoxious_agent.check_query(self.latest_user_query):
             return "Your query was flagged as obnoxious. Please rephrase and try again."
         
-        search_results = self.query_agent.query_vector_store(self.latest_user_query)
+        # Rephrase query with context from history to handle pronouns
+        rephrased_query = self.context_rewriter_agent.rephrase(
+            self.history,
+            self.latest_user_query
+        )
+        
+        search_results = self.query_agent.query_vector_store(rephrased_query)
         relevance = self.relevant_docs_agent.get_relevance(search_results)
         if relevance.lower() == "no":
             return "I'm sorry, I don't have relevant information to answer your query at the moment."
-        response = self.answering_agent.generate_response(self.latest_user_query, search_results, self.history)
+        response = self.answering_agent.generate_response(rephrased_query, search_results, self.history)
         self.history.append({"role": "user", "content": self.latest_user_query})
         self.history.append({"role": "assistant", "content": response})
         return response
