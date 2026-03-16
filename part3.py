@@ -53,7 +53,7 @@ class Query_Agent:
         res = self.client.embeddings.create(input=[query], model="text-embedding-3-small")
         xq = res.data[0].embedding
         # Search Pinecone
-        res = self.index.query(vector=xq, top_k=k, include_metadata=True)
+        res = self.index.query(vector=xq, top_k=k, include_metadata=True, namespace= "ns500")
         return [match['metadata']['text'] for match in res['matches']]
 
     def set_prompt(self, prompt):

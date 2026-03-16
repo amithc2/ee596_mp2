@@ -25,7 +25,7 @@ if "head_agent" not in st.session_state:
     st.session_state.head_agent = Head_Agent(
         openai_key=os.getenv("OPENAI_API_KEY"),
         pinecone_key=os.getenv("PINECONE_API_KEY"),
-        pinecone_index_name="ml-index-part3"
+        pinecone_index_name="machine-learning-textbook"
     )
 
 if "messages" not in st.session_state:
