@@ -97,9 +97,10 @@ Retrieved Documents:
 
 First, check if this is a greeting or small talk (e.g., 'Hi', 'Hello', 'How are you?', 'How's your day going?', 'Thanks', 'sup'). If it is, respond with ONLY: SMALL_TALK
 
-For technical queries involving multiple concepts or comparisons (e.g., 'Should I use X or Y?', 'Compare X and Y'), return 'Yes' if you have documents about ANY of the relevant concepts, even if they don't directly compare them.
-
-For single-topic queries, return 'Yes' if the documents are relevant, or 'No' if they are completely unrelated.
+For technical queries:
+- If asking about a specific concept/algorithm (K-means, CNN, SVM, etc.), return 'Yes' if documents mention that concept, even if they don't directly answer the classification question.
+- If asking for comparisons or analytical questions, return 'Yes' if you have documents about ANY relevant concept.
+- Only return 'No' if the documents are completely off-topic (irrelevant to Machine Learning).
 
 Return ONLY one of: Yes, No, or SMALL_TALK"""
         response = self.client.chat.completions.create(
