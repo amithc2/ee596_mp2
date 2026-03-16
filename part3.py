@@ -69,11 +69,13 @@ class Answering_Agent:
 
     def generate_response(self, query, docs, conv_history, k=5):
         context = "\n".join(docs[:k])
-        system_prompt = f"""You are a friendly and helpful Machine Learning chatbot.
+        system_prompt = f"""You are a helpful Machine Learning chatbot.
 
-If the user's query is a greeting or small talk (e.g., 'Hi', 'How are you?', 'sup', 'thanks'), respond warmly and naturally without using the context below. Keep it brief and friendly.
+If the user's query is a greeting or small talk (e.g., 'Hi', 'How are you?', 'sup'), respond warmly and naturally without using the context below.
 
-For technical or specific questions about Machine Learning, use the following context to provide accurate answers:
+For technical questions, use the following context to provide accurate answers. If the question is comparative or analytical (e.g., comparing two algorithms), synthesize information from the provided documents to answer thoughtfully, even if the documents don't directly address the comparison.
+
+Context:
 {context}"""
         messages = [{"role": "system", "content": system_prompt}]
         messages.extend(conv_history)
@@ -88,7 +90,18 @@ class Relevant_Documents_Agent:
 
     def get_relevance(self, query, documents) -> str:
         context = "\n".join(documents)
-        prompt = f"User Query: {query}\n\nRetrieved Documents:\n{context}\n\nFirst, check if this is a greeting or small talk (e.g., 'Hi', 'Hello', 'How are you?', 'Thanks', 'sup'). If it is, respond with ONLY the word: SMALL_TALK\n\nOtherwise, for technical queries, return 'Yes' if the documents are relevant, or 'No' if they are not relevant. Your only return opitons are Yes, No, or SMALL_TALK."
+        prompt = f"""User Query: {query}
+
+Retrieved Documents:
+{context}
+
+First, check if this is a greeting or small talk (e.g., 'Hi', 'Hello', 'How are you?', 'How's your day going?', 'Thanks', 'sup'). If it is, respond with ONLY: SMALL_TALK
+
+For technical queries involving multiple concepts or comparisons (e.g., 'Should I use X or Y?', 'Compare X and Y'), return 'Yes' if you have documents about ANY of the relevant concepts, even if they don't directly compare them.
+
+For single-topic queries, return 'Yes' if the documents are relevant, or 'No' if they are completely unrelated.
+
+Return ONLY one of: Yes, No, or SMALL_TALK"""
         response = self.client.chat.completions.create(
             model="gpt-4.1-nano",
             messages=[
